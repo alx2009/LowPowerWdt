@@ -1232,7 +1232,9 @@ void LowPowerClass::longPowerDown(uint32_t sleepTime) {
 ISR (WDT_vect)
 {
 	// WDIE & WDIF is cleared in hardware upon entering this ISR
-	wdt_disable();
+	//wdt_disable();            // conrary to LowPower, in LowPowerWdt we keep the watchdog enabled. We are now in reset mode
+	wdt_enable(wdt_prescaler);  // The watchdog is already enabled here, but we must set the correct timeout
+                                    // No need to reset the wdt before changing the timeout, as we know the timer just re-started (after the WDT interrupt)	
 }
 
 #elif defined(__arm__)
