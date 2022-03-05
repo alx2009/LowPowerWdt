@@ -9,7 +9,7 @@
 This allows using low power sleep modes without losing the protection of the watchdog when the CPU is running
 <p/>
 This is achieved adding a Setup function. Setup must be called at the beginning to set the watchdog timeout when the CPU is running. As usual with a watchdog, wdt_reset() must be called frequently when the CPU is running (but of course not while the CPU is in sleep mode). See examples for more information.
-<br/>
+<p><br/>
 By alx2009,
 <br/>
 Forked from [LowPowerLab.com](http://LowPowerLab.com).
