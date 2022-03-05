@@ -144,7 +144,7 @@ do { 						\
 *                       >0 a delay of the specified milliseconds is triggered 
 *
 */
-void setup(uint8_t wdt_timer_value, long initial_delay) {
+void LowPowerClass::setup(uint8_t wdt_timer_value, long initial_delay) {
     wdt_reset();
     if (initial_delay<0) {
 	if (wdt_timer_value <  WDTO_1S )   initial_delay = 2000l;
