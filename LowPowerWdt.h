@@ -117,11 +117,8 @@ enum idle_t
 
 class LowPowerClass
 {
-	protected:
-	    uint8_t wdt_prescaler = SLEEP_15MS;  // Added by alx2009 for enabling Watchdog interrupt (timer) + System Reset Mode
-	
 	public:
-	    setup(uint8_t wdt_timer_value, long initial_delay=-1); // Added by alx2009 for enabling Watchdog interrupt (timer) + System Reset Mode
+	    void setup(uint8_t wdt_timer_value, long initial_delay=-1); // Added by alx2009 for enabling Watchdog interrupt (timer) + System Reset Mode
 		#if defined (__AVR__)
 
 			#if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega168__) || defined (__AVR_ATmega168P__) || defined (__AVR_ATmega88__)

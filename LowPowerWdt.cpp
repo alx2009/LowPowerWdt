@@ -52,7 +52,9 @@
 	#error "Processor architecture is not supported."
 #endif
 
-#include "LowPower.h"
+#include "LowPowerWdt.h"
+
+volatile uint8_t wdt_prescaler = SLEEP_15MS;  // Added by alx2009 for enabling Watchdog interrupt (timer) + System Reset Mode
 
 #if defined (__AVR__)
 // Only Pico Power devices can change BOD settings through software
@@ -142,11 +144,11 @@ do { 						\
 *                       >0 a delay of the specified milliseconds is triggered 
 *
 */
-setup(uint8_t wdt_timer_value, long initial_delay) {
+void setup(uint8_t wdt_timer_value, long initial_delay) {
     wdt_reset();
     if (initial_delay<0) {
-	if (wdt_timer_value <  WDTO_1MS )   initial_delay = 2000 ul;
-	else if (wdt_timer_value < WDTO_2S ) initial_delay = 1000 ul;
+	if (wdt_timer_value <  WDTO_1S )   initial_delay = 2000l;
+	else if (wdt_timer_value < WDTO_2S ) initial_delay = 1000l;
     }
     if (initial_delay>0l) {
 	    wdt_disable();
