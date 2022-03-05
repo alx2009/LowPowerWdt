@@ -40,5 +40,6 @@ void loop()
     // Do something here
     // Example: Read sensor, data logging, data transmission.
     
-    wdt_reset();
+    wdt_reset(); // This should be called often enough (when the CPU is running, not during sleep modes - obviously) in order to reset the watchdog timer
+
 }
