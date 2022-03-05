@@ -1,5 +1,6 @@
 // **** INCLUDES *****
-#include "LowPower.h"
+#include "LowPowerWdt.h"
+#error "The library currently does not support the SAMD21 architecture. Work in progress..."
 
 // External interrupt on pin 0 (use pin 0 to 24, except pin 4 on Arduino Zero)
 const int pin = 0;
