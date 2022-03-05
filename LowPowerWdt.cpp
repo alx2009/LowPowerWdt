@@ -1,7 +1,7 @@
 /*******************************************************************************
 * LowPowerWdt Library. Allows using AVR Interrupt and System Reset Mode
 * In this mode after the watchdog timer is used to wake up the device, the watchdog is enabled:
-* If the timer expiress while not in a sleep mode, a watchdog reset is triggered.
+* If the timer expires while not in a sleep mode, a watchdog reset is triggered.
 * See PowerDownWakePeriodic_wdt example for more information
 * Based on a fork of LowPower Library. Below original revision hystory:
 *
