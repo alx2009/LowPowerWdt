@@ -1,12 +1,12 @@
 {
-  "name": "LowPower_LowPowerLab",
+  "name": "LowPowerWdt_alx2009",
   "version": "2.2",
-  "keywords": "low, power, sleep",
-  "description": "Library sleeping AVR & SAMD MCUs",
+  "keywords": "low, power, sleep, wdt, watchdog",
+  "description": "Library sleeping AVR & SAMD MCUs and using the watchdog while running",
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/LowPowerLab/LowPower.git"
+    "url": "https://github.com/alx2009/LowPowerWdt"
   },
   "frameworks": "arduino",
   "platforms": "atmelavr"
