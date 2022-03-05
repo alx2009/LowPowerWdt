@@ -17,6 +17,7 @@ powerSave	KEYWORD2
 powerStandby	KEYWORD2
 powerExtStandby	KEYWORD2
 standby	KEYWORD2
+setup KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
