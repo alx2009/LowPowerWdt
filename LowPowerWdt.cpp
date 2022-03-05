@@ -117,6 +117,45 @@ do { 						\
 	#endif
 #endif
 
+
+/*******************************************************************************
+* Name: setup
+* Description: Activates the watchdog timer with the specified prescaler
+* 
+* Argument  	       Description
+* =========  	       ===========
+* 1. wdt_timer_value   Timeout value. The values are defined in avr/wdt.h, but it is also possible to use SLEEP_XX defined in LowPowerWdt.h
+*                        WDTO_15MS  -  15ms
+*                        WDTO_30MS  -  30ms 
+*                        WDTO_60MS  -  60ms 
+*                        WDTO_120MS - 120ms  
+*                        WDTO_250MS - 250ms   
+*                        WDTO_500MS - 500ms 
+*                        WDTO_1S    -   1s
+*                        WDTO_2S    -   2s
+*                        WDTO_4S    -   4s
+*                        WDTO_8S    -   8s
+* 2. initial_delay	Initial delay with watchdog disabled
+*                       This may be needed with short watchdog timeouts to give sufficient time to reload the sketch in case of cyclic restart
+*                       <0 (default): the delay is selected automatically
+*                        0 = no delay
+*                       >0 a delay of the specified milliseconds is triggered 
+*
+*/
+setup(uint8_t wdt_timer_value, long initial_delay) {
+    wdt_reset();
+    if (initial_delay<0) {
+	if (wdt_timer_value <  WDTO_1MS )   initial_delay = 2000 ul;
+	else if (wdt_timer_value < WDTO_2S ) initial_delay = 1000 ul;
+    }
+    if (initial_delay>0l) {
+	    wdt_disable();
+	    delay(initial_delay);
+    }
+    wdt_prescaler = wdt_timer_value;
+    wdt_enable(wdt_prescaler);
+}
+
 /*******************************************************************************
 * Name: idle
 * Description: Putting ATmega328P/168 into idle state. Please make sure you
