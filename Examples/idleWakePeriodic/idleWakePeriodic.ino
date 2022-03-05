@@ -1,9 +1,16 @@
 // **** INCLUDES *****
-#include "LowPower.h"
+#include "LowPowerWdt.h"
+#include <avr/wdt.h>
+
 
 void setup()
 {
-  // No setup is required for this library
+    // MANDATORY when using LowPowerWdt   
+    // Contrary to LowPower, Setup is almost always required for LowPowerWdt, otherwise:
+    //                           1) after using one of the sleep modes the watchdog will be active, potentially with a too short timeout
+    //                           2) if a bug cause the watchdog to restart immdiately after reset, there may not be enough time to reload the sketch
+    //                           
+    LowPower.setup(WDTO_2S);    // Setup the watchdog with 4s timeout
 }
 
 void loop() 
@@ -38,5 +45,6 @@ void loop()
 
   // Do something here
   // Example: Read sensor, data logging, data transmission.
+  wdt_reset(); // This should be called often enough (when the CPU is running, not during sleep modes - obviously) in order to reset the watchdog timer
 }
 
